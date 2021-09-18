@@ -3,30 +3,29 @@ using namespace std;
 
 int minDist(int arr[], int n, int x, int y)
 {
-    int posX=-1;
-    int posY=-1;
+    int posX = -1;
+    int posY = -1;
 
     for (int i = 0; i < n; i++)
     {
         if (arr[i] == x)
         {
-            posX = min(posX, i);
-            cout << posX << " ";
+            posX = max(posX, i);
         }
         if (arr[i] == y)
         {
-            posY = min(posY, i);
-            cout << posY << " ";
+            posY = max(posY, i);
         }
+
     }
-    int dist = INT_MAX;
+    int dist = 102356;
     if (posX > posY)
     {
-        dist = posX - posY;
+        dist = min(posX - posY, dist);
     }
     else
     {
-        dist = posY - posX;
+        dist = min(posY - posX, dist);
     }
 
     return dist;
@@ -34,9 +33,9 @@ int minDist(int arr[], int n, int x, int y)
 
 int main()
 {
-    int arr[] = {86,39,90,67,84,66,62};
-    int n = 7;
-    cout<<minDist(arr, n, 42, 12);
+    int arr[] = {1,2};
+    int n = 2;
+    cout << minDist(arr, n,1,2);
 
     return 0;
 }
