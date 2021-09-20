@@ -67,6 +67,7 @@ void display(Node *&head)
     cout << "NULL";
 }
 
+
 void findByIndex(Node *&head, int x)
 {
     int count = 1;
@@ -88,14 +89,17 @@ void findByIndex(Node *&head, int x)
 int main()
 {
     Node *head = NULL;
-    insertAtTail(head,1);
-    insertAtTail(head,2);
-    insertAtTail(head,3);
-    insertAtTail(head,4);
-    insertAtTail(head,657);
-    insertAtTail(head,76);
+    insertAtTail(head, 1);
+    insertAtTail(head, 2);
+    insertAtTail(head, 3);
+    insertAtTail(head, 4);
+    insertAtTail(head, 5);
+    insertAtTail(head, 6);
+    insertAtTail(head, 7);
+    insertAtTail(head, 8);
 
-    findByIndex(head,5);
+    findByIndex(head, 5);
+
 
     return 0;
 }
