@@ -1,77 +1,51 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-class Node
+class node
 {
 public:
     int data;
-    Node *next;
+    node *next;
 
-    // constructor
-    Node(int val)
+    node(int val)
     {
         data = val;
         next = NULL;
     }
 };
 
-void insertAtHead(Node *&head, int val)
+void insertAtTail(node *&head, int val)
 {
-    Node *n = new Node(val);
-
-    n->next = head;
-    head = n;
-}
-
-void insertAtTail(Node *&head, int val)
-{
-    Node *n = new Node(val);
-    // if LL is empty
+    // create a new node
+    node *n = new node(val);
     if (head == NULL)
     {
         head = n;
         return;
     }
 
-    // now LL is not empty
-    Node *temp = head;
-    while (temp->next != NULL)
+    // LL is not empty
+    node *temp = head;
+    while (temp != NULL)
     {
+
         temp = temp->next;
     }
     temp->next = n;
 }
 
-bool findByValue(Node *&head, int x)
+void insertAtHead(node *&head, int val)
 {
-    Node *temp = head;
-    while (temp->next != NULL)
-    {
-        if (temp->data == x)
-        {
-            return true;
-        }
-        temp = temp->next;
-    }
-    return false;
+    node *n = new node(val);
+    n->next = head;
+    head = n;
 }
 
-void display(Node *&head)
+node *reverse(node *&head)
 {
-    Node *temp = head;
-    while (temp->next != NULL)
-    {
-        cout << temp->data << "->";
-        temp = temp->next;
-    }
-    cout << "NULL";
-}
-
-Node *reverseLL(Node *&head)
-{
-    Node *prevPtr = NULL;
-    Node *currPtr = head;
-    Node *nextPtr = head->next;
+    node *prevPtr = NULL;
+    node *currPtr = head;
+    node *nextPtr = head->next;
 
     while (currPtr != NULL)
     {
@@ -86,15 +60,6 @@ Node *reverseLL(Node *&head)
 
 int main()
 {
-    Node *head = NULL;
-    insertAtTail(head, 1);
-    insertAtTail(head, 2);
-    insertAtTail(head, 3);
-    insertAtTail(head, 4);
-    insertAtTail(head, 5);
-    insertAtTail(head, 6);
-    insertAtTail(head, 7);
-    insertAtTail(head, 8);
 
     return 0;
 }
