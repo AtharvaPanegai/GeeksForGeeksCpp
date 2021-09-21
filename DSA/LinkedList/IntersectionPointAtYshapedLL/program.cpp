@@ -41,7 +41,7 @@ void insertAtHead(node *&head, int val)
     head = n;
 }
 
-int LengthOfLL(node *&head)
+int lengthofLL(node *&head)
 {
     int count = 1;
     node *temp = head;
@@ -50,21 +50,19 @@ int LengthOfLL(node *&head)
         count++;
         temp = temp->next;
     }
-
     return count;
 }
 
-int insterSectionOfLL(node *&first, node *&second)
+int intersectionPoint(node *&first, node *&second)
 {
+    // get a pointer at the intersection point
+    int l1 = lengthofLL(first);
+    int l2 = lengthofLL(second);
 
-    // get the length of First and second LL
-    int l1 = LengthOfLL(first);
-    int l2 = LengthOfLL(second);
+    node *ptr1; //bigger LL
+    node *ptr2; //smaller LL
 
-    node *ptr1; // bigger
-    node *ptr2; //smaller
-
-    int d = 0;
+    int d = 0; // diff
     if (l1 < l2)
     {
         d = l2 - l1;
@@ -73,12 +71,12 @@ int insterSectionOfLL(node *&first, node *&second)
     }
     else
     {
-        d = l1 - l2;
+        d = l2 - l1;
         ptr1 = first;
         ptr2 = second;
     }
 
-    // traverse till the common point
+    // let's put the bigger LL pointer to common  node
     while (d)
     {
         if (ptr1 == NULL)
@@ -89,17 +87,16 @@ int insterSectionOfLL(node *&first, node *&second)
         d--;
     }
 
-    // now both the LL are at same point 
-    while (ptr1!=NULL || ptr2!=NULL)
+    // now both are at same point traverse and check
+    while (ptr1 != NULL || ptr2 != NULL)
     {
-        if(ptr1==ptr2){
+        if (ptr1 == ptr2)
+        {
             return ptr1->data;
-        }        
+        }
         ptr1 = ptr1->next;
         ptr2 = ptr2->next;
-
     }
-    
 }
 
 int main()
