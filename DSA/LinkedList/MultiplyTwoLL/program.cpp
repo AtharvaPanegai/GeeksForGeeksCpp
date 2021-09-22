@@ -43,18 +43,19 @@ void insertAtHead(node *&head, int val)
 
 node *multiplyLoop(node *&one, node *&two)
 {
-    node *tempOne = one;
-    node *tempTwo = two;
-    node *multiPliedLL;
-    while (tempOne != NULL || tempTwo != NULL)
+    node *p1 = one;
+    node *p2 = two;
+    node *multiPliedLL = new node(-1);
+    node *p3 = multiPliedLL;
+    while (p1 != NULL && p2 != NULL)
     {
-        int multiPlication = tempOne->data * tempTwo->data;
-        insertAtTail(multiPliedLL, multiPlication);
-        tempOne = tempOne->next;
-        tempTwo = tempTwo->next;
+        p3->next = new node(p1->data * p2->data);
+        p1 = p1->next;
+        p2 = p2->next;
+        p3 = p3->next;
     }
 
-    return multiPliedLL;
+    return p3->next;
 }
 
 void display(node *&head)
