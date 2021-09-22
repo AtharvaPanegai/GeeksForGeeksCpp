@@ -41,24 +41,24 @@ void insertAtHead(node *&head, int val)
     head = n;
 }
 
-node *removeDuplicatesSorted(node *&head)
+bool detectLoop(node *&head)
 {
-    node *temp = head;
-    while (temp->next != NULL)
+    node *one = head;
+    node *two = head;
+    while (one != NULL)
     {
-        if (temp->data == temp->next->data)
+        if (one == two)
         {
-            node *toDelete = temp->next;
-            temp->next = temp->next->next;
-            delete (toDelete);
+            return true;
         }
-        temp = temp->next;
+        one = one->next;
+        two = two->next->next;
     }
-}
 
+    return false;
+}
 int main()
 {
 
     return 0;
 }
-
