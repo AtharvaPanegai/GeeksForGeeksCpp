@@ -7,7 +7,6 @@ bool isRotation(string s1, string s2)
     {
         return false;
     }
-
     string temp = s1 + s2;
     return (temp.find(s2) != string::npos);
 }
