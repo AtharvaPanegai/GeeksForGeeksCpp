@@ -18,7 +18,7 @@ int longestsubStrPalindrome(string s)
         maxLength = max(maxLength, (h - l));
         l++, h--;
     }
-
+    
     return maxLength;
 }
 
