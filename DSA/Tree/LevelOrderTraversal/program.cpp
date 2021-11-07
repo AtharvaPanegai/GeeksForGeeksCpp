@@ -17,7 +17,7 @@ struct Node
 };
 
 void levelOrderTraversal(Node *root)
-{
+{   
     queue<Node *> q;
     q.push(root);
     q.push(NULL);
@@ -30,6 +30,7 @@ void levelOrderTraversal(Node *root)
         if (node != NULL)
         {
             cout << node->data << " ";
+
             if (node->left != NULL)
             {
                 q.push(node->left);
