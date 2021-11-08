@@ -15,42 +15,26 @@ struct Node
     }
 };
 
-void levelorder(Node *root)
+vector<vector<int>> levelOrder(Node* node)
 {
-    if (root == NULL)
-    {
-        return;
-    }
-    queue<Node *> q;
-    q.push(root);
-    while (!q.empty())
-    {
-        Node *curr = q.front();
-        q.pop();
-        if (curr == NULL)
-        {
-            cout << "$"
-                 << " ";
-        }
-        else if (curr != NULL)
-        {
-            cout << curr->data << " ";
-            if (curr->left != NULL)
-            {
-                q.push(curr->left);
-            }
-            if (curr->right != NULL)
-            {
-                q.push(curr->right);
-            }
-        }
-        else if (!q.empty())
-        {
-            q.push(NULL);
-        }
-    }
+   queue<Node*> q;
+  vector<vector<int>> ans;
+  Node* curr;
+  q.push(node);
+  while(!q.empty()){
+      int size=q.size();
+      vector<int> vec;
+      while(size--){
+          curr=q.front();
+          q.pop();
+          vec.push_back(curr->data);
+          if(curr->left) q.push(curr->left);
+          if(curr->right) q.push(curr->right);
+      }
+      ans.push_back(vec);
+  }
+  return ans;
 }
-
 int main()
 {
     struct Node *root = new Node(1);
@@ -60,7 +44,7 @@ int main()
     root->right->left = new Node(5);
     root->right->left->left = new Node(7);
     root->right->right = new Node(6);
-    levelorder(root);
+    levelOrder(root);
 
     return 0;
 }
